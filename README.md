@@ -1,4 +1,4 @@
-# RoboGen-QBO
+# ROBxTASK Skills Q.BO One
 Holds all python projects of QBO One Robot ("opt/qbo"-folder on Raspberry Pi 3)
 
 Currently features:
