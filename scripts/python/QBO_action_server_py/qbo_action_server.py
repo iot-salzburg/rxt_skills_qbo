@@ -2,20 +2,20 @@
 import os, sys, time
 import rospy
 import actionlib
-import robogenqbo.msg
+import rxt_skills_qbo.msg
 
 # audio capabilities
-sys.path.append('/opt/QBO/catkin_ws/src/RoboGen-QBO/scripts/python/RoboGen_Projects/EmotionAudio/')
+sys.path.append('/opt/QBO/catkin_ws/src/rxt_skills_qbo/scripts/python/RoboGen_Projects/EmotionAudio/')
 import Processing_Audio
 import Various_Functions
 
 # saved settings
-sys.path.append('/opt/QBO/catkin_ws/src/RoboGen-QBO/scripts/python/RoboGen_Projects/MyQBOSettings')
+sys.path.append('/opt/QBO/catkin_ws/src/rxt_skills_qbo/scripts/python/RoboGen_Projects/MyQBOSettings')
 import SettingsReader
 
 #set up ports for communicating with servos
-sys.path.append('/opt/QBO/catkin_ws/src/RoboGen-QBO/scripts/python/RoboGen_Projects/EmotionVideo/')
-sys.path.append('/opt/QBO/catkin_ws/src/RoboGen-QBO/scripts/python/RoboGen_Projects/ControlQBO')
+sys.path.append('/opt/QBO/catkin_ws/src/rxt_skills_qbo/scripts/python/RoboGen_Projects/EmotionVideo/')
+sys.path.append('/opt/QBO/catkin_ws/src/rxt_skills_qbo/scripts/python/RoboGen_Projects/ControlQBO')
 import serial
 import QboCmd
 from ControlHeadAsync import *
@@ -150,12 +150,12 @@ def qbo_read_setting(setting):
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 class VoiceOutput(object):
     
-    _feedback = robogenqbo.msg.VoiceOutputFeedback() # create feedback message
-    _result = robogenqbo.msg.VoiceOutputResult() # create result message
+    _feedback = rxt_skills_qbo.msg.VoiceOutputFeedback() # create feedback message
+    _result = rxt_skills_qbo.msg.VoiceOutputResult() # create result message
 
     def __init__(self, name):
         self._action_name = name
-        self._as = actionlib.SimpleActionServer(self._action_name, robogenqbo.msg.VoiceOutputAction, execute_cb=self.execute_cb, auto_start = False)
+        self._as = actionlib.SimpleActionServer(self._action_name, rxt_skills_qbo.msg.VoiceOutputAction, execute_cb=self.execute_cb, auto_start = False)
         self._as.start()
       
     def execute_cb(self, goal):
@@ -181,12 +181,12 @@ class VoiceOutput(object):
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 class WaitForUserInput(object):
     
-    _feedback = robogenqbo.msg.WaitForUserInputFeedback() #create feedback message
-    _result = robogenqbo.msg.WaitForUserInputResult() #create result message
+    _feedback = rxt_skills_qbo.msg.WaitForUserInputFeedback() #create feedback message
+    _result = rxt_skills_qbo.msg.WaitForUserInputResult() #create result message
 
     def __init__(self, name):
         self._action_name = name
-        self._as = actionlib.SimpleActionServer(self._action_name, robogenqbo.msg.WaitForUserInputAction, execute_cb=self.execute_cb, auto_start = False)
+        self._as = actionlib.SimpleActionServer(self._action_name, rxt_skills_qbo.msg.WaitForUserInputAction, execute_cb=self.execute_cb, auto_start = False)
         self._as.start()
       
     def execute_cb(self, goal):
@@ -213,12 +213,12 @@ class WaitForUserInput(object):
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 class MoveToLocation(object):
        
-    _feedback = robogenqbo.msg.MoveToLocationFeedback() #create feedback message
-    _result = robogenqbo.msg.MoveToLocationResult() #create result message
+    _feedback = rxt_skills_qbo.msg.MoveToLocationFeedback() #create feedback message
+    _result = rxt_skills_qbo.msg.MoveToLocationResult() #create result message
 
     def __init__(self, name):
         self._action_name = name
-        self._as = actionlib.SimpleActionServer(self._action_name, robogenqbo.msg.MoveToLocationAction, execute_cb=self.execute_cb, auto_start = False)
+        self._as = actionlib.SimpleActionServer(self._action_name, rxt_skills_qbo.msg.MoveToLocationAction, execute_cb=self.execute_cb, auto_start = False)
         self._as.start()
       
     def execute_cb(self, goal):
@@ -244,12 +244,12 @@ class MoveToLocation(object):
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 class WaitForExternalEvent(object):
     
-    _feedback = robogenqbo.msg.WaitForExternalEventFeedback() #create feedback message
-    _result = robogenqbo.msg.WaitForExternalEventResult() #create result message
+    _feedback = rxt_skills_qbo.msg.WaitForExternalEventFeedback() #create feedback message
+    _result = rxt_skills_qbo.msg.WaitForExternalEventResult() #create result message
 
     def __init__(self, name):
         self._action_name = name
-        self._as = actionlib.SimpleActionServer(self._action_name, robogenqbo.msg.WaitForExternalEventAction, execute_cb=self.execute_cb, auto_start = False)
+        self._as = actionlib.SimpleActionServer(self._action_name, rxt_skills_qbo.msg.WaitForExternalEventAction, execute_cb=self.execute_cb, auto_start = False)
         self._as.start()
       
     def execute_cb(self, goal):
@@ -275,12 +275,12 @@ class WaitForExternalEvent(object):
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 class GraphicalUserInteraction(object):
     
-    _feedback = robogenqbo.msg.GraphicalUserInteractionFeedback() #create feedback message
-    _result = robogenqbo.msg.GraphicalUserInteractionResult() #create result message
+    _feedback = rxt_skills_qbo.msg.GraphicalUserInteractionFeedback() #create feedback message
+    _result = rxt_skills_qbo.msg.GraphicalUserInteractionResult() #create result message
 
     def __init__(self, name):
         self._action_name = name
-        self._as = actionlib.SimpleActionServer(self._action_name, robogenqbo.msg.GraphicalUserInteractionAction, execute_cb=self.execute_cb, auto_start = False)
+        self._as = actionlib.SimpleActionServer(self._action_name, rxt_skills_qbo.msg.GraphicalUserInteractionAction, execute_cb=self.execute_cb, auto_start = False)
         self._as.start()
       
     def execute_cb(self, goal):
@@ -306,12 +306,12 @@ class GraphicalUserInteraction(object):
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 class GetData(object):
     
-    _feedback = robogenqbo.msg.GetDataFeedback() #create feedback message
-    _result = robogenqbo.msg.GetDataResult() #create result message
+    _feedback = rxt_skills_qbo.msg.GetDataFeedback() #create feedback message
+    _result = rxt_skills_qbo.msg.GetDataResult() #create result message
 
     def __init__(self, name):
         self._action_name = name
-        self._as = actionlib.SimpleActionServer(self._action_name, robogenqbo.msg.GetDataAction, execute_cb=self.execute_cb, auto_start = False)
+        self._as = actionlib.SimpleActionServer(self._action_name, rxt_skills_qbo.msg.GetDataAction, execute_cb=self.execute_cb, auto_start = False)
         self._as.start()
       
     def execute_cb(self, goal):
@@ -338,12 +338,12 @@ class GetData(object):
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 class SetData(object):
     
-    _feedback = robogenqbo.msg.SetDataFeedback() #create feedback message
-    _result = robogenqbo.msg.SetDataResult() #create result message
+    _feedback = rxt_skills_qbo.msg.SetDataFeedback() #create feedback message
+    _result = rxt_skills_qbo.msg.SetDataResult() #create result message
 
     def __init__(self, name):
         self._action_name = name
-        self._as = actionlib.SimpleActionServer(self._action_name, robogenqbo.msg.SetDataAction, execute_cb=self.execute_cb, auto_start = False)
+        self._as = actionlib.SimpleActionServer(self._action_name, rxt_skills_qbo.msg.SetDataAction, execute_cb=self.execute_cb, auto_start = False)
         self._as.start()
       
     def execute_cb(self, goal):

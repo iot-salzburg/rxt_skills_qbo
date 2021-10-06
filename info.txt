@@ -1,0 +1,28 @@
+
+--------------------------------------------------------------------
+QBO: Automatischer Start von Scripts beim Booten:
+--------------------------------------------------------------------
+Scripts fuer Autostart hinzufuegen in autostart-Datei unter:
+
+/home/pi/.config/lxsession/LXDE-pi/autostart
+
+Derzeit eingetragen sind:
+
+lxterminal -e /usr/bin/python /opt/QBO/catkin_ws/src/rxt_skills_qbo/scripts/python/RoboGen_Projects/EmotionVideo/EmotionDetectionClient.py
+lxterminal -e /usr/bin/python /opt/QBO/catkin_ws/src/rxt_skills_qbo/scripts/python/RoboGen_Projects/EmotionAudio/Main_Programm.py 
+lxterminal -e /usr/bin/python /opt/QBO/catkin_ws/src/rxt_skills_qbo/scripts/python/RoboGen_Projects/BlueToothAdapter/BlueToothAdapter.py
+
+--------------------------------------------------------------------
+QBO: Automatisches Hinzufügen von ROS Variablen beim Terminal-Start
+--------------------------------------------------------------------
+Im /home/pi/.bashrc file sollte am Ende der Datei folgender Eintrag zu finden sein:
+
+cd /opt/QBO/catkin_ws/
+source ./devel/setup.bash
+source /opt/QBO/catkin_ws/devel/setup.bash
+source /opt/QBO/catkin_ws/devel/setup.bash
+source /opt/QBO/catkin_ws/devel/setup.bash
+source /opt/QBO/catkin_ws/src/rxt_skills_qbo/launch/createEnvVars.sh
+
+
+

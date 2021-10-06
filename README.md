@@ -35,16 +35,16 @@ In addition to this repository: hardware-specific changes to Q.Bo and OS changes
 8) "source /opt/QBO/catkin_ws/devel/setup.bash"
 9) "echo "source /opt/QBO/catkin_ws/devel/setup.bash" >> ~/.bashrc"
 10) "rosdep install -y --from-paths /opt/QBO/catkin_ws --ignore-src --rosdistro kinetic -r --os=debian:stretch" (from workspace, needs a root user terminal or "sudo" command depending on local setup, use "pkexec su" to login console as root!)
-11) "catkin_create_pkg robogenqbo std_msgs rospy roscpp"
+11) "catkin_create_pkg rxt_skills_qbo std_msgs rospy roscpp"
 
 ## start with
 1) "roscore"
-2) "rosrun robogenqbo [name_of_python_file.py]"
+2) "rosrun rxt_skills_qbo [name_of_python_file.py]"
 
 ## connectivity
 
 Q.BO One Robot:
-- package_name: "robogenqbo"
+- package_name: "rxt_skills_qbo"
 - Hostname: "qbo"
 - IP-Address: "192.168.48.58"
 - to check for connectivity try steps: http://wiki.ros.org/ROS/NetworkSetup

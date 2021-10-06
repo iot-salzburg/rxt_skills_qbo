@@ -11,7 +11,7 @@ import json
 #---------------------------------------------------------------------------------------------
 def loadAASType():
 
-    with open('/opt/QBO/catkin_ws/src/RoboGen-QBO/scripts/python/QBO_ros_aas_registration/QBO_type.json', 'r') as dt_file:
+    with open('/opt/QBO/catkin_ws/src/rxt_skills_qbo/scripts/python/QBO_ros_aas_registration/QBO_type.json', 'r') as dt_file:
         dt_data = json.load(dt_file) 
         # TODO
     
@@ -22,7 +22,7 @@ def loadAASType():
 #---------------------------------------------------------------------------------------------
 def loadAASInstance():
     
-    with open('/opt/QBO/catkin_ws/src/RoboGen-QBO/scripts/python/QBO_ros_aas_registration/QBO_instance.json', 'r') as dt_file:
+    with open('/opt/QBO/catkin_ws/src/rxt_skills_qbo/scripts/python/QBO_ros_aas_registration/QBO_instance.json', 'r') as dt_file:
         dt_data = json.load(dt_file) 
         # TODO
         

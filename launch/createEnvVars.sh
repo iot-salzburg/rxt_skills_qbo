@@ -1,7 +1,7 @@
 #!/bin/sh
 export ROS_IP=`hostname -i`
 export ROS_MASTER_URI="http://192.168.48.41:11311/"
-export ROS_PYTHON_LOG_CONFIG_FILE="/opt/QBO/catkin_ws/src/RoboGen-QBO/logging/logging.conf"
+export ROS_PYTHON_LOG_CONFIG_FILE="/opt/QBO/catkin_ws/src/rxt_skills_qbo/logging/logging.conf"
 echo "[createEnvVars.sh] Succesfully exported ROS env variables for this terminal"
 
 # Either do every time you open a console:

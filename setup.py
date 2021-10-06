@@ -7,7 +7,7 @@ from distutils.core import setup
 from catkin_pkg.python_setup import generate_distutils_setup
 
 d = generate_distutils_setup(
-    packages=['robogenqbo'], #same as name in package.xml!!
+    packages=['rxt_skills_qbo'], #same as name in package.xml!!
     #install_requires=['rospy', 'actionlib'], #external packages as dependencies are already defined in package.xml
     scripts=[
         'scripts/python/QBO_action_server_py',

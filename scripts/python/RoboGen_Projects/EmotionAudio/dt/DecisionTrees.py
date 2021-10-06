@@ -78,7 +78,7 @@ def processDecisionTree():
                 if(nrOfOptions >= number):
                     skip = False
                     area = JsonParser.goToNewArea(area, number)
-                    #os.system("mpg321 -q /opt/QBO/catkin_ws/src/RoboGen-QBO/scripts/Python_Projects/EmotionAudio/mp3/SoundEffect_Confirm.mp3") # Bestätigungs-Sound abspielen
+                    #os.system("mpg321 -q /opt/QBO/catkin_ws/src/rxt_skills_qbo/scripts/Python_Projects/EmotionAudio/mp3/SoundEffect_Confirm.mp3") # Bestätigungs-Sound abspielen
                 else:
                     Various_Functions.qboSpeak('Diese Antwort ist leider nicht moeglich. Bitte schau dir die letzte Frage noch einmal genau an')
                     skip = True
