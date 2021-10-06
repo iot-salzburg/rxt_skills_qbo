@@ -1,0 +1,110 @@
+{
+  "category": "SRFGLabor",
+  "idShort": "QBOType",
+  "modelType": "AssetAdministrationShell",
+  "administration": {
+    "revision": "001",
+    "version": "V0.01"
+  },
+  "identification": {
+    "id": "http://robxtask.salzburgresearch.at/labor/QBO#aas",
+    "idType": "IRI"
+  },
+  "asset": {
+    "modelType": "Asset",
+    "identification": {
+      "id": "http://robxtask.salzburgresearch.at/labor/QBO",
+      "idType": "IRI"
+    },
+    "kind": "Type",
+    "description": [
+      {
+        "description": "i-Asset Labor - Sozialer Roboter",
+        "language": "de"
+      }
+    ]
+  },
+  "submodels": [
+{
+  "category": "SRFGLabor",
+  "idShort": "information",
+  "modelType": "Submodel",
+  "administration": {
+    "revision": "001",
+    "version": "V0.01"
+  },
+  "identification": {
+    "id": "http://iasset.salzburgresearch.at/labor/QBO#info",
+    "idType": "IRI"
+  },
+  "kind": "Instance",
+  "submodelElements": [
+    {
+      "modelType": "Property",
+      "category": "SRFGLabor",
+      "idShort": "manufacturer",
+      "kind": "Instance",
+      "value": "theCorpora",
+      "valueQualifier": "STRING",
+      "description": [
+        {
+          "description": "Hersteller",
+          "language": "de"
+        }
+      ],
+      "parent": {
+        "modelType": "Reference",
+        "keys": [
+          {
+            "value": "http://iasset.salzburgresearch.at/labor/QBO#aas",
+            "idType": "IRI",
+            "local": true,
+            "type": "AssetAdministrationShell"
+          },
+          {
+            "value": "information",
+            "idType": "IdShort",
+            "local": true,
+            "type": "Submodel"
+          }
+        ]
+      },
+      "semanticId": {
+        "modelType": "Reference",
+        "keys": [
+          {
+            "value": "0173-1#02-AAO677#002",
+            "idType": "IRDI",
+            "local": true,
+            "type": "GlobalReference"
+          }
+        ]
+      }
+    }
+  ],
+  "description": [
+    {
+      "description": "i-Asset Labor - Sozialer Roboter-Infomodel",
+      "language": "de"
+    }
+  ],
+  "parent": {
+    "modelType": "Reference",
+    "keys": [
+      {
+        "value": "http://iasset.salzburgresearch.at/labor/QBO#aas",
+        "idType": "IRI",
+        "local": true,
+        "type": "AssetAdministrationShell"
+      }
+    ]
+  }
+}
+  ],
+  "description": [
+    {
+      "description": "i-Asset Labor - Sozialer Roboter",
+      "language": "de"
+    }
+  ]
+}

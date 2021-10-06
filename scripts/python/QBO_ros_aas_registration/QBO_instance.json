@@ -1,0 +1,67 @@
+{
+  "category": "SRFGLabor",
+  "idShort": "QBOInstance",
+  "modelType": "AssetAdministrationShell",
+  "administration": {
+    "revision": "001",
+    "version": "V0.01"
+  },
+  "identification": {
+    "id": "http://robxtask.salzburgresearch.at/labor/QBO#aas",
+    "idType": "IRI"
+  },
+  "asset": {
+    "modelType": "Asset",
+    "identification": {
+      "id": "http://robxtask.salzburgresearch.at/labor/QBO",
+      "idType": "IRI"
+    },
+    "kind": "Type",
+    "description": [
+      {
+        "description": "i-Asset Labor - Sozialer Roboter",
+        "language": "de"
+      }
+    ]
+  },
+  "submodels": [
+{
+  "category": "SRFGLabor",
+  "idShort": "information",
+  "modelType": "Submodel",
+  "administration": {
+    "revision": "001",
+    "version": "V0.01"
+  },
+  "identification": {
+    "id": "http://iasset.salzburgresearch.at/labor/QBO#info",
+    "idType": "IRI"
+  },
+  "kind": "Instance",
+  "submodelElements": [],
+  "description": [
+    {
+      "description": "#GetData #SetData #VoiceOutput #WaitForUserInput",
+      "language": "de"
+    }
+  ],
+  "parent": {
+    "modelType": "Reference",
+    "keys": [
+      {
+        "value": "http://iasset.salzburgresearch.at/labor/QBO#aas",
+        "idType": "IRI",
+        "local": true,
+        "type": "AssetAdministrationShell"
+      }
+    ]
+  }
+}
+  ],
+  "description": [
+    {
+      "description": "i-Asset Labor - Sozialer Roboter",
+      "language": "de"
+    }
+  ]
+}
