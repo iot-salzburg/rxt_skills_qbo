@@ -1,7 +1,12 @@
+
+#Ignore all python compiled files
 *.pyc
+
+# Ignore all logging files, with one exception: .conf file
 *.log
-
 /logging
+!/logging/logging.conf
 
-/Python_Projects/EmotionAudio/mp3/tmp.mp3
-/Python_Projects/MyQBOSettings/settings.json
+# Ignore MP3 files and QBO settings
+/scripts/python/RoboGen_Projects/EmotionAudio/mp3/tmp.mp3
+/scripts/python/RoboGen_Projects/MyQBOSettings/settings.json
