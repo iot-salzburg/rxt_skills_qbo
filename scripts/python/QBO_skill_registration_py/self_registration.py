@@ -4,7 +4,8 @@ import requests
 import json
 
 # register this device on ROBxTASK cloud platform with skill implementation documentation
-registration_endpoint = 'https://api.jsonstorage.net/v1/json/f8d89bf8-6826-4434-9ca1-edd60405bf6d' # TODO change to real endpoint
+# INFO: needs Basic Authentication: USER: "devr" + PW: "DevReg!robXtask"
+registration_endpoint = 'https://robxtask.salzburgresearch.at/devreg/v1/devices' 
 
 #---------------------------------------------------------------------------------------------
 # loadRegistrationFile
