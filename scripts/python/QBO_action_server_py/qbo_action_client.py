@@ -39,7 +39,7 @@ if __name__ == '__main__':
         print ('INVOKING RXT_SKILL: WaitForUserInput')
         result = send_ROSActionRequest_WithGoal('WaitForUserInput', rxt_skills_qbo.msg.WaitForUserInputAction, rxt_skills_qbo.msg.WaitForUserInputGoal(inputContent=b'void'))
         if result:
-            print("Result was:", ', '.join([str(n) for n in result.returnMessage.decode("utf-8")]))
+            print("Result was:", ''.join([str(n) for n in result.returnMessage.decode("utf-8")]))
         print ('----------------------------------')
         
         # request MoveToLocation
@@ -71,7 +71,7 @@ if __name__ == '__main__':
         print ('INVOKING RXT_SKILL: GetData')
         result = send_ROSActionRequest_WithGoal('GetData', rxt_skills_qbo.msg.GetDataAction, rxt_skills_qbo.msg.GetDataGoal(inputData=b'robotName'))
         if result:
-            print("Result was:", ', '.join([str(n) for n in result.data.decode("utf-8")]))
+            print("Result was:", ''.join([str(n) for n in result.data.decode("utf-8")]))
         print ('----------------------------------')
         
         # request SetData
