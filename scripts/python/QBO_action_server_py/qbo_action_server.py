@@ -26,6 +26,9 @@ ser = serial.Serial(port, baudrate=115200, bytesize = serial.EIGHTBITS, stopbits
 QBO = QboCmd.Controller(ser)
 QBO.SetNoseColor(QboCmd.nose_color_none) # init nose
 
+# self registration
+from self_registration import *
+
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 # helper function: speak
@@ -369,6 +372,11 @@ class SetData(object):
 #------------------------------------------------------------------------------------------------------------------------------------------------------------	 
 if __name__ == '__main__':
     
+    # self registration
+    registration_file = loadRegistrationFile()
+    uploadAAS(registration_file)
+    
+    # init server
     rospy.init_node('qbo')
     server1 = VoiceOutput('VoiceOutput')
     server2 = WaitForUserInput('WaitForUserInput')
