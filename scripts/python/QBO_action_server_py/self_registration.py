@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
+from requests.auth import HTTPBasicAuth
 import requests
 import json
 
@@ -24,13 +25,14 @@ def loadRegistrationFile():
 def uploadAAS(aas):
     
     try:
-        headers = {'Content-type': 'application/json'}    
-        r_get = requests.get(registration_endpoint + '/b8:27:eb:24:1f:b2', timeout=5, json=aas, headers=headers, auth=('devr', 'DevReg\!robXtask'))
+        headers = {'Content-type': 'application/json'}
+        auth = HTTPBasicAuth('register_device_key', 'asDycMEj82yY9Jz1hySo')  
+        r_get = requests.get(registration_endpoint + '/b8:27:eb:24:1f:b2', timeout=5, json=aas, headers=headers, auth=auth)
 
-        if r_get.ok:
-            r_add = requests.put(registration_endpoint, timeout=5, json=aas, headers=headers, auth=('devr', 'DevReg\!robXtask')) 
+        if r_get.status_code == 200: # 200 = valid response with body
+            r_add = requests.put(registration_endpoint, timeout=5, json=aas, headers=headers, auth=auth) 
         else:
-            r_add = requests.post(registration_endpoint, timeout=5, json=aas, headers=headers, auth=('devr', 'DevReg\!robXtask')) 
+            r_add = requests.post(registration_endpoint, timeout=5, json=aas, headers=headers, auth=auth) 
             
         if r_get.ok and r_add.ok:
             print("------------------------------------")
