@@ -12,11 +12,10 @@ registration_endpoint = 'https://robxtask.salzburgresearch.at/robxtask/registrat
 #---------------------------------------------------------------------------------------------
 def loadRegistrationFile():
 
-    with open('/opt/QBO/catkin_ws/src/rxt_skills_qbo/scripts/python/QBO_ros_aas_registration/QBO_registration_file.json', 'r') as dt_file:
-        dt_data = json.load(dt_file) 
-        # TODO
+    with open('/opt/QBO/catkin_ws/src/rxt_skills_qbo/scripts/python/QBO_ros_aas_registration/QBO_registration_file.json', 'r') as json_file:
+        json_data = json.load(json_file) 
     
-    return dt_data
+    return json_data
 
 
 # -------------------------------------------------------------------------------------------
@@ -25,15 +24,19 @@ def loadRegistrationFile():
 def uploadAAS(aas):
     
     try:
-        r = requests.post(registration_endpoint, timeout=5, json=aas, auth=('devr', 'DevReg\!robXtask'))
-        headers = {'Content-type': 'application/json'}      
+        headers = {'Content-type': 'application/json'} 
+        r = requests.post(registration_endpoint, timeout=5, json=aas, headers=headers, auth=('devr', 'DevReg\!robXtask'))
             
         if r.ok:
-            print("Description uploaded succesfullly")
+            print("------------------------------------")
+            print("Result of self registration:")
+            print("Description uploaded succesfully")
+            print("------------------------------------")
         else:
-            print("--------------------------")
+            print("------------------------------------")
+            print("Result of self registration:")
             print("Error in server response: " + str(r.status_code))
-            print("--------------------------")
+            print("------------------------------------")
                         
     except requests.exceptions.RequestException as e:
         print (e)
