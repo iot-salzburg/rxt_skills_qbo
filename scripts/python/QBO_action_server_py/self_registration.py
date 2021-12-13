@@ -34,7 +34,7 @@ def uploadAAS(aas):
         else:
             r_add = requests.post(registration_endpoint, timeout=5, json=aas, headers=headers, auth=auth) 
             
-        if r_get.ok and r_add.ok:
+        if r_get.status_code == 200 and r_add.ok:
             print("------------------------------------")
             print("Result of self registration:")
             print("Entry already existed and was updated")
