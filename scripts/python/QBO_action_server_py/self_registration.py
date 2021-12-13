@@ -24,10 +24,20 @@ def loadRegistrationFile():
 def uploadAAS(aas):
     
     try:
-        headers = {'Content-type': 'application/json'} 
-        r = requests.post(registration_endpoint, timeout=5, json=aas, headers=headers, auth=('devr', 'DevReg\!robXtask'))
+        headers = {'Content-type': 'application/json'}    
+        r_get = requests.get(registration_endpoint + 'b8:27:eb:24:1f:b2', timeout=5, json=aas, headers=headers, auth=('devr', 'DevReg\!robXtask'))
+
+        if r_get.ok:
+            r_add = requests.put(registration_endpoint, timeout=5, json=aas, headers=headers, auth=('devr', 'DevReg\!robXtask')) 
+        else:
+            r_add = requests.post(registration_endpoint, timeout=5, json=aas, headers=headers, auth=('devr', 'DevReg\!robXtask')) 
             
-        if r.ok:
+        if r_get.ok and r_add.ok:
+            print("------------------------------------")
+            print("Result of self registration:")
+            print("Entry already existed and was updated")
+            print("------------------------------------")
+        elif r_add.ok:
             print("------------------------------------")
             print("Result of self registration:")
             print("Description uploaded succesfully")
@@ -35,12 +45,11 @@ def uploadAAS(aas):
         else:
             print("------------------------------------")
             print("Result of self registration:")
-            print("Error in server response: " + str(r.status_code))
+            print("Error in server response: " + str(r_add.status_code))
             print("------------------------------------")
                         
     except requests.exceptions.RequestException as e:
         print (e)
     
     
-    
-    
+
