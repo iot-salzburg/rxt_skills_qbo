@@ -6,7 +6,7 @@ import json
 
 # register this device on ROBxTASK cloud platform with skill implementation documentation
 # INFO: needs Basic Authentication: USER: "devr" + PW: "DevReg!robXtask"
-registration_endpoint = 'https://robxtask.salzburgresearch.at/robxtask/registration-service/v3/api-docs?group=all/device' 
+registration_endpoint = 'https://robxtask.salzburgresearch.at/robxtask/registration-service/device' 
 
 #---------------------------------------------------------------------------------------------
 # loadRegistrationFile
@@ -26,13 +26,12 @@ def uploadAAS(aas):
     
     try:
         headers = {'Content-type': 'application/json'}
-        auth = HTTPBasicAuth('register_device_key', 'asDycMEj82yY9Jz1hySo')  
-        r_get = requests.get(registration_endpoint + '/b8:27:eb:24:1f:b2', timeout=5, json=aas, headers=headers, auth=auth)
+        r_get = requests.get(registration_endpoint + '/b8:27:eb:24:1f:b2?register_device_key=asDycMEj82yY9Jz1hySo', timeout=5, json=aas, headers=headers)
 
         if r_get.status_code == 200: # 200 = valid response with body
-            r_add = requests.put(registration_endpoint, timeout=5, json=aas, headers=headers, auth=auth) 
+            r_add = requests.put(registration_endpoint + '?register_device_key=asDycMEj82yY9Jz1hySo', timeout=5, json=aas, headers=headers) 
         else:
-            r_add = requests.post(registration_endpoint, timeout=5, json=aas, headers=headers, auth=auth) 
+            r_add = requests.post(registration_endpoint + '?register_device_key=asDycMEj82yY9Jz1hySo', timeout=5, json=aas, headers=headers) 
             
         if r_get.status_code == 200 and r_add.ok:
             print("------------------------------------")
