@@ -6,37 +6,114 @@
   {
     "SkillName": "GetData",
     "SkillVersion": "V01",
-    "SkillDescription": "This skill can be used to read from the currently set QBO internal settings. At the moment only reading 'robotName' and 'userName' is supported."
+    "SkillDescription": "This skill can be used to read from the currently set QBO internal settings. At the moment only reading 'robotName' and 'userName' is supported.",
+    "SkillSlots": [
+      {
+      "SlotName": "inputData",
+      "SlotType": "enum",
+      "SlotValues": ["robotName", "userName"]
+      }
+	],
+    "ReturnResult": {
+      "ReturnResultName": "data",
+      "ReturnResultType": "string"
+    }
   },
   {
     "SkillName": "SetData",
     "SkillVersion": "V01",
-    "SkillDescription": "This skill can be used to change the currently set QBO internal settings. At the moment only changing 'robotName' and 'userName' is supported. Pass the new name as a SLOT parameter to change one of those two fields. Pass the field you want to change as a SLOT parameter to specify which one to write to."
+    "SkillDescription": "This skill can be used to change the currently set QBO internal settings. At the moment only changing 'robotName' and 'userName' is supported. Pass the new name as a SLOT parameter to change one of those two fields. Pass the field you want to change as a SLOT parameter to specify which one to write to.",
+    "SkillSlots": [
+      {
+      "SlotName": "outputData",
+      "SlotType": "enum",
+      "SlotValues": ["robotName", "userName"]
+      }
+	],
+    "ReturnResult": {
+      "ReturnResultName": "isOK",
+      "ReturnResultType": "bool"
+    }
   },
   {
     "SkillName": "MoveToLocation",
     "SkillVersion": "V01",
-    "SkillDescription": "QBO will move its head according to the specified SLOT direction. The following directions are possible: up, down, right, left, start. Passing the start-direction will make QBO go back to its original starting position." 
+    "SkillDescription": "QBO will move its head according to the specified SLOT direction. The following directions are possible: up, down, right, left, start. Passing the start-direction will make QBO go back to its original starting position.",
+    "SkillSlots": [
+      {
+      "SlotName": "location",
+      "SlotType": "enum",
+      "SlotValues": ["up", "down", "left", "right", "start"]
+      }
+	],
+    "ReturnResult": {
+      "ReturnResultName": "isOK",
+      "ReturnResultType": "bool"
+    }
   },
   {
     "SkillName": "VoiceOutput",
     "SkillVersion": "V01",
-    "SkillDescription": "QBO will speak the sentence that you defined in the SLOT. QBO has multiple different voices, but will always use the voice which is currently set in the properties. Try to use the Skill 'SetData' to change the voice property if needed. QBO has trouble cleanly pronouncing german letters, so for clear pronunciation please try to stick with sentences that avoid german special characters (e.g. ö,ä,ü,...). If you dont it wont cause an error, but it will sound less good."
+    "SkillDescription": "QBO will speak the sentence that you defined in the SLOT. QBO has multiple different voices, but will always use the voice which is currently set in the properties. Try to use the Skill 'SetData' to change the voice property if needed. QBO has trouble cleanly pronouncing german letters, so for clear pronunciation please try to stick with sentences that avoid german special characters (e.g. ö,ä,ü,...). If you dont it wont cause an error, but it will sound less good.",
+    "SkillSlots": [
+      {
+      "SlotName": "outputMessage",
+      "SlotType": "string",
+      "SlotValues": []
+      }
+	],
+    "ReturnResult": {
+      "ReturnResultName": "isOK",
+      "ReturnResultType": "bool"
+    }
   },
   {
     "SkillName": "WaitForUserInput",
     "SkillVersion": "V01",
-    "SkillDescription": "QBO will listen to your next sentence spoken out loud by any given user. If you are not sure when to speak closely watch the open terminal (black box) running on QBOs main screen. It will print out the exact time when to speak and then wait for one entire sentence being said. As soon as you stop talking QBO wll assume that you are finished speaking and continue the program with the returned sentence. You can use the spoken sentence in variables afterwards if needed."
+    "SkillDescription": "QBO will listen to your next sentence spoken out loud by any given user. If you are not sure when to speak closely watch the open terminal (black box) running on QBOs main screen. It will print out the exact time when to speak and then wait for one entire sentence being said. As soon as you stop talking QBO wll assume that you are finished speaking and continue the program with the returned sentence. You can use the spoken sentence in variables afterwards if needed.",
+    "SkillSlots": [
+      {
+      "SlotName": "inputContent",
+      "SlotType": "string",
+      "SlotValues": []
+      }
+	],
+    "ReturnResult": {
+      "ReturnResultName": "returnMessage",
+      "ReturnResultType": "string"
+    }
   },
   {
     "SkillName": "WaitForExternalEvent",
     "SkillVersion": "V01",
-    "SkillDescription": "On QBO this skill will start QBOs face detection with emotion analysis. The skill will open the camera and analyse the face of one user who should place directly before the robot. If the robot detects a face its nose color will change from green (no face detected) to blue (found a face). The face will then automatically be analyzed by QBO for one of the following emotions: fear, happy, neutral, pain, sadness, surprise. You have to pass one of these emotions as the end condition as a SLOT parameter when calling the skill. When QBO sees one of these emotions it will change its mouth to mimic your face accordingly so you can visually see what QBO thinks you look like. The skill will be open and not end until the passed SLOT parameter was detected on your face. After it was found it will tell you so and you may stop the invoked skill by pressing the Q-Button (cancel) on the camera view. This will end the skill and the program may continue."
+    "SkillDescription": "On QBO this skill will start QBOs face detection with emotion analysis. The skill will open the camera and analyse the face of one user who should place directly before the robot. If the robot detects a face its nose color will change from green (no face detected) to blue (found a face). The face will then automatically be analyzed by QBO for one of the following emotions: fear, happy, neutral, pain, sadness, surprise. You have to pass one of these emotions as the end condition as a SLOT parameter when calling the skill. When QBO sees one of these emotions it will change its mouth to mimic your face accordingly so you can visually see what QBO thinks you look like. The skill will be open and not end until the passed SLOT parameter was detected on your face. After it was found it will tell you so and you may stop the invoked skill by pressing the Q-Button (cancel) on the camera view. This will end the skill and the program may continue.",
+    "SkillSlots": [
+      {
+      "SlotName": "inputText",
+      "SlotType": "enum",
+      "SlotValues": ["fear", "happy", "neutral", "pain", "sadness", "surprise"]
+      }
+	],
+    "ReturnResult": {
+      "ReturnResultName": "isOK",
+      "ReturnResultType": "bool"
+    }
   },
   {
     "SkillName": "GraphicalUserInteraction",
     "SkillVersion": "V01",
-    "SkillDescription": "QBO has a mouth with LEDs and can display the following faces: fear, happy, neutral, pain, sadness, surprise. Pass one of these faces to QBO as a SLOT parameter to change his mouth accordingly."
+    "SkillDescription": "QBO has a mouth with LEDs and can display the following faces: fear, happy, neutral, pain, sadness, surprise. Pass one of these faces to QBO as a SLOT parameter to change his mouth accordingly.",
+    "SkillSlots": [
+      {
+      "SlotName": "outputMessage",
+      "SlotType": "enum",
+      "SlotValues": ["fear", "happy", "neutral", "pain", "sadness", "surprise"]
+      }
+	],
+    "ReturnResult": {
+      "ReturnResultName": "isOK",
+      "ReturnResultType": "bool"
+    }
   }
   ],
   "ConfigParams": [
