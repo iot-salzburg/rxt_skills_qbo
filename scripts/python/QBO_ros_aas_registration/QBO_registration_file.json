@@ -1,6 +1,7 @@
 {
   "DeviceID": "b8:27:eb:24:1f:b2",
   "DeviceName": "TheCorpora Q.BO One",
+  "DeviceOwner": "81",
   "DeviceDescription": "Social robot for more natural user interactions",
   "Skills": [
   {
@@ -10,13 +11,13 @@
     "SkillSlots": [
       {
       "SlotName": "inputData",
-      "SlotType": "enum",
+      "SlotType": "Enum",
       "SlotValues": ["robotName", "userName"]
       }
 	],
     "ReturnResult": {
       "ReturnResultName": "data",
-      "ReturnResultType": "string"
+      "ReturnResultType": "String"
     }
   },
   {
@@ -26,13 +27,13 @@
     "SkillSlots": [
       {
       "SlotName": "outputData",
-      "SlotType": "enum",
+      "SlotType": "Enum",
       "SlotValues": ["robotName", "userName"]
       }
 	],
     "ReturnResult": {
       "ReturnResultName": "isOK",
-      "ReturnResultType": "bool"
+      "ReturnResultType": "Bool"
     }
   },
   {
@@ -42,13 +43,13 @@
     "SkillSlots": [
       {
       "SlotName": "location",
-      "SlotType": "enum",
+      "SlotType": "Enum",
       "SlotValues": ["up", "down", "left", "right", "start"]
       }
 	],
     "ReturnResult": {
       "ReturnResultName": "isOK",
-      "ReturnResultType": "bool"
+      "ReturnResultType": "Bool"
     }
   },
   {
@@ -58,13 +59,13 @@
     "SkillSlots": [
       {
       "SlotName": "outputMessage",
-      "SlotType": "string",
+      "SlotType": "String",
       "SlotValues": []
       }
 	],
     "ReturnResult": {
       "ReturnResultName": "isOK",
-      "ReturnResultType": "bool"
+      "ReturnResultType": "Bool"
     }
   },
   {
@@ -74,13 +75,13 @@
     "SkillSlots": [
       {
       "SlotName": "inputContent",
-      "SlotType": "string",
+      "SlotType": "String",
       "SlotValues": []
       }
 	],
     "ReturnResult": {
       "ReturnResultName": "returnMessage",
-      "ReturnResultType": "string"
+      "ReturnResultType": "String"
     }
   },
   {
@@ -90,13 +91,13 @@
     "SkillSlots": [
       {
       "SlotName": "inputText",
-      "SlotType": "enum",
+      "SlotType": "Enum",
       "SlotValues": ["fear", "happy", "neutral", "pain", "sadness", "surprise"]
       }
 	],
     "ReturnResult": {
       "ReturnResultName": "isOK",
-      "ReturnResultType": "bool"
+      "ReturnResultType": "Bool"
     }
   },
   {
@@ -106,13 +107,13 @@
     "SkillSlots": [
       {
       "SlotName": "outputMessage",
-      "SlotType": "enum",
+      "SlotType": "Enum",
       "SlotValues": ["fear", "happy", "neutral", "pain", "sadness", "surprise"]
       }
 	],
     "ReturnResult": {
       "ReturnResultName": "isOK",
-      "ReturnResultType": "bool"
+      "ReturnResultType": "Bool"
     }
   }
   ],
