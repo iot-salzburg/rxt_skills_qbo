@@ -26,12 +26,12 @@ def uploadAAS(aas):
     
     try:
         headers = {'Content-type': 'application/json'}
-        r_get = requests.get(registration_endpoint + '/b8:27:eb:24:1f:b2?register_device_key=asDycMEj82yY9Jz1hySo', timeout=5, json=aas, headers=headers)
+        r_get = requests.get(registration_endpoint + '/b8:27:eb:24:1f:b2?register_device_key=cEu9fbzxp3bnVWUS', timeout=5, json=aas, headers=headers)
 
         if r_get.status_code == 200: # 200 = valid response with body
-            r_add = requests.put(registration_endpoint + '?register_device_key=asDycMEj82yY9Jz1hySo', timeout=5, json=aas, headers=headers) 
+            r_add = requests.put(registration_endpoint + '?register_device_key=cEu9fbzxp3bnVWUS', timeout=5, json=aas, headers=headers) 
         else:
-            r_add = requests.post(registration_endpoint + '?register_device_key=asDycMEj82yY9Jz1hySo', timeout=5, json=aas, headers=headers) 
+            r_add = requests.post(registration_endpoint + '?register_device_key=cEu9fbzxp3bnVWUS', timeout=5, json=aas, headers=headers) 
             
         if r_get.status_code == 200 and r_add.ok:
             print("------------------------------------")
