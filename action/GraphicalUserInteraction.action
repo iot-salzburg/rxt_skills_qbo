@@ -1,5 +1,6 @@
 #goal definition
 char[] outputMessage
+char[] userOptions
 ---
 #result definition
 bool isOK

@@ -1,5 +1,6 @@
 #goal definition
 char[] outputData
+char[] Endpoint
 ---
 #result definition
 bool isOK

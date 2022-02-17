@@ -1,5 +1,6 @@
 #goal definition
 char[] inputText
+char[] timeStamp
 ---
 #result definition
 bool isOK

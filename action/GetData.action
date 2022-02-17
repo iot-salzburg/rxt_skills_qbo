@@ -1,5 +1,6 @@
 #goal definition
 char[] inputData
+char[] Endpoint
 ---
 #result definition
 char[] data
