@@ -24,7 +24,23 @@ def send_ROSActionRequest_WithGoal(skillName, skillMsgType, skillGoal):
 # main function
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 if __name__ == '__main__':
-    try:	
+    try:
+
+	# request SendMessage
+        print ('----------------------------------')
+        print ('INVOKING RXT_SKILL: SendMessage')
+        result = send_ROSActionRequest_WithGoal('SendMessage', rxt_skills_panda.msg.SendMessageAction, rxt_skills_panda.msg.SendMessageGoal(messageContent=b'START_LOADING'))
+        if result:
+            print("Result was: " + str(result.isOK))
+        print ('----------------------------------')
+
+	# request OnMessageReceive
+        print ('----------------------------------')
+        print ('INVOKING RXT_SKILL: OnMessageReceive')
+        result = send_ROSActionRequest_WithGoal('OnMessageReceive', rxt_skills_panda.msg.OnMessageReceiveAction, rxt_skills_panda.msg.OnMessageReceiveGoal(messageContent=b'START_LOADING'))
+        if result:
+            print("Result was: " + str(result.isOK))
+        print ('----------------------------------')
         
         # request VoiceOutput
         print ('----------------------------------')

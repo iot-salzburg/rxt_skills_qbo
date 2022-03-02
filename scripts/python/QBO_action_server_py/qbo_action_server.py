@@ -368,6 +368,71 @@ class SetData(object):
             self._as.set_succeeded(self._result)
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
+# SendMessage (NOT YET IMPLEMENTED)
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+class SendMessage(object):
+    
+    _feedback = rxt_skills_panda.msg.SendMessageFeedback() #create feedback message
+    _result = rxt_skills_panda.msg.SendMessageResult() #create result message
+
+    def __init__(self, name):
+        self._action_name = name
+        self._as = actionlib.SimpleActionServer(self._action_name, rxt_skills_panda.msg.SendMessageAction, execute_cb=self.execute_cb, auto_start = False)
+        self._as.start()
+      
+    def execute_cb(self, goal):
+        
+        # append the seeds to give user feedback
+        self._feedback.sequence = []
+        self._feedback.sequence.append(0)
+        self._feedback.sequence.append(1)
+        
+        rospy.loginfo('%s: Executing, creating SendMessage sequence with outputData %s with seeds %i, %i' % (self._action_name, goal.messageContent, self._feedback.sequence[0], self._feedback.sequence[1]))
+        
+        # start executing the action
+        # TODO
+        time.sleep(2.0)
+        success = True
+          
+        if success:
+            self._result.isOK = success
+            rospy.loginfo('%s: Succeeded' % self._action_name)
+            self._as.set_succeeded(self._result)
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+# OnMessageReceive (NOT YET IMPLEMENTED)
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+class OnMessageReceive(object):
+    
+    _feedback = rxt_skills_panda.msg.OnMessageReceiveFeedback() #create feedback message
+    _result = rxt_skills_panda.msg.OnMessageReceiveResult() #create result message
+
+    def __init__(self, name):
+        self._action_name = name
+        self._as = actionlib.SimpleActionServer(self._action_name, rxt_skills_panda.msg.OnMessageReceiveAction, execute_cb=self.execute_cb, auto_start = False)
+        self._as.start()
+      
+    def execute_cb(self, goal):
+        
+        # append the seeds to give user feedback
+        self._feedback.sequence = []
+        self._feedback.sequence.append(0)
+        self._feedback.sequence.append(1)
+        
+        rospy.loginfo('%s: Executing, creating OnMessageReceive sequence with outputData %s with seeds %i, %i' % (self._action_name, goal.messageContent, self._feedback.sequence[0], self._feedback.sequence[1]))
+        
+        # start executing the action
+        # TODO
+        time.sleep(2.0)
+        success = True
+          
+        if success:
+            self._result.isOK = success
+            rospy.loginfo('%s: Succeeded' % self._action_name)
+            self._as.set_succeeded(self._result)
+
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
 # main function
 #------------------------------------------------------------------------------------------------------------------------------------------------------------	 
 if __name__ == '__main__':
@@ -385,6 +450,8 @@ if __name__ == '__main__':
     server5 = GraphicalUserInteraction('GraphicalUserInteraction')
     server6 = GetData('GetData')
     server7 = SetData('SetData')
+    server8 = SendMessage('SendMessage')
+    server9 = OnMessageReceive('OnMessageReceive')
     rospy.spin()
 	
 	

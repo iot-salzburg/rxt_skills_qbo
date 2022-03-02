@@ -1,0 +1,9 @@
+#goal definition
+char[] messageType
+char[] messageContent
+---
+#result definition
+bool isOK
+---
+#feedback
+int32[] sequence
