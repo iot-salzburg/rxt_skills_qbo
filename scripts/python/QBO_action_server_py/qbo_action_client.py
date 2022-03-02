@@ -29,7 +29,7 @@ if __name__ == '__main__':
 	# request SendMessage
         print ('----------------------------------')
         print ('INVOKING RXT_SKILL: SendMessage')
-        result = send_ROSActionRequest_WithGoal('SendMessage', rxt_skills_panda.msg.SendMessageAction, rxt_skills_panda.msg.SendMessageGoal(messageContent=b'START_LOADING'))
+        result = send_ROSActionRequest_WithGoal('SendMessage', rxt_skills_qbo.msg.SendMessageAction, rxt_skills_qbo.msg.SendMessageGoal(messageContent=b'START_LOADING'))
         if result:
             print("Result was: " + str(result.isOK))
         print ('----------------------------------')
@@ -37,7 +37,7 @@ if __name__ == '__main__':
 	# request OnMessageReceive
         print ('----------------------------------')
         print ('INVOKING RXT_SKILL: OnMessageReceive')
-        result = send_ROSActionRequest_WithGoal('OnMessageReceive', rxt_skills_panda.msg.OnMessageReceiveAction, rxt_skills_panda.msg.OnMessageReceiveGoal(messageContent=b'START_LOADING'))
+        result = send_ROSActionRequest_WithGoal('OnMessageReceive', rxt_skills_qbo.msg.OnMessageReceiveAction, rxt_skills_qbo.msg.OnMessageReceiveGoal(messageContent=b'START_LOADING'))
         if result:
             print("Result was: " + str(result.isOK))
         print ('----------------------------------')

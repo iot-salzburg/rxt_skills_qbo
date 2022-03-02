@@ -372,12 +372,12 @@ class SetData(object):
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 class SendMessage(object):
     
-    _feedback = rxt_skills_panda.msg.SendMessageFeedback() #create feedback message
-    _result = rxt_skills_panda.msg.SendMessageResult() #create result message
+    _feedback = rxt_skills_qbo.msg.SendMessageFeedback() #create feedback message
+    _result = rxt_skills_qbo.msg.SendMessageResult() #create result message
 
     def __init__(self, name):
         self._action_name = name
-        self._as = actionlib.SimpleActionServer(self._action_name, rxt_skills_panda.msg.SendMessageAction, execute_cb=self.execute_cb, auto_start = False)
+        self._as = actionlib.SimpleActionServer(self._action_name, rxt_skills_qbo.msg.SendMessageAction, execute_cb=self.execute_cb, auto_start = False)
         self._as.start()
       
     def execute_cb(self, goal):
@@ -404,12 +404,12 @@ class SendMessage(object):
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 class OnMessageReceive(object):
     
-    _feedback = rxt_skills_panda.msg.OnMessageReceiveFeedback() #create feedback message
-    _result = rxt_skills_panda.msg.OnMessageReceiveResult() #create result message
+    _feedback = rxt_skills_qbo.msg.OnMessageReceiveFeedback() #create feedback message
+    _result = rxt_skills_qbo.msg.OnMessageReceiveResult() #create result message
 
     def __init__(self, name):
         self._action_name = name
-        self._as = actionlib.SimpleActionServer(self._action_name, rxt_skills_panda.msg.OnMessageReceiveAction, execute_cb=self.execute_cb, auto_start = False)
+        self._as = actionlib.SimpleActionServer(self._action_name, rxt_skills_qbo.msg.OnMessageReceiveAction, execute_cb=self.execute_cb, auto_start = False)
         self._as.start()
       
     def execute_cb(self, goal):
