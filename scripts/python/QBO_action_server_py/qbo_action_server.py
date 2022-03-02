@@ -147,6 +147,24 @@ def qbo_read_setting(setting):
     else:
         return 'Error: Unknown setting'
 
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+# helper function: send message
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+def qbo_send_message(value):
+    
+    # TODO - NOT YET IMPLEMENTED
+    time.sleep(2.0)
+    return True
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+# helper function: receive message
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+def qbo_receive_message(value):
+    
+    # TODO - NOT YET IMPLEMENTED
+    time.sleep(2.0)
+    return True
+
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 # VoiceOutput
@@ -390,9 +408,7 @@ class SendMessage(object):
         rospy.loginfo('%s: Executing, creating SendMessage sequence with outputData %s with seeds %i, %i' % (self._action_name, goal.messageContent, self._feedback.sequence[0], self._feedback.sequence[1]))
         
         # start executing the action
-        # TODO
-        time.sleep(2.0)
-        success = True
+        success = qbo_send_message(goal.messageContent)
           
         if success:
             self._result.isOK = success
@@ -422,9 +438,7 @@ class OnMessageReceive(object):
         rospy.loginfo('%s: Executing, creating OnMessageReceive sequence with outputData %s with seeds %i, %i' % (self._action_name, goal.messageContent, self._feedback.sequence[0], self._feedback.sequence[1]))
         
         # start executing the action
-        # TODO
-        time.sleep(2.0)
-        success = True
+        success = qbo_receive_message(goal.messageContent)
           
         if success:
             self._result.isOK = success
