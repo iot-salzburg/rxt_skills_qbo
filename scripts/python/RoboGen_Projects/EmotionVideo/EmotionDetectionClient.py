@@ -33,8 +33,6 @@ QBO.SetNoseColor(QboCmd.nose_color_none) # init nose
 # Set up required webcam object and variables for frame cutting and sampling
 # -------------------------------------------------------------------------------------------
 vs = cv2.VideoCapture(0)
-vs.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH, 100)
-vs.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT, 100)
 
 frame_rate = 1
 prevTime = 0
@@ -115,7 +113,7 @@ def setQBOHeadPos(camCode, serverDown):
 # -------------------------------------------------------------------------------------------
 def analyzeFramesForEmotion(terminationEmotion):
     
-    worker_thread = threading.Thread(target=controlQBOHead, args=("Thread-AsyncControl", vs, ser, QBO))
+    worker_thread = threading.Thread(target=controlQBOHead, args=("Thread-AsyncControl", cv2, vs, ser, QBO))
     worker_thread.start()
 
     emotion = ""
