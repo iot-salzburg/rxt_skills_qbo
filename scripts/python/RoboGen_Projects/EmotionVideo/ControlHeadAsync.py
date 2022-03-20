@@ -35,7 +35,7 @@ def controlQBOHead(threadName, cv2, vs, ser, QBO):
     time.sleep(1) # wait for camera to initialize correctly (gets an empty curropted frame otherwise)
     
     # create window for imshow
-    resolution = (800, 500)
+    resolution = (800, 500) # TODO: change resolution to real resolution from tablet of QBO STEM
     winname = "Q.BO One Gesichtserkennung"
     cv2.namedWindow(winname, cv2.WINDOW_NORMAL)
     cv2.resizeWindow(winname, resolution[0], resolution[1])
