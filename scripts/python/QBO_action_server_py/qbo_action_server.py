@@ -254,6 +254,7 @@ class MoveToLocation(object):
         # start executing the action
         #success = fibonacci_example(self, success)
         success = qbo_movehead(goal.location)
+        time.sleep(1)
           
         if success:
             self._result.isOK = success
