@@ -29,6 +29,10 @@ QBO.SetNoseColor(QboCmd.nose_color_none) # init nose
 # self registration
 from self_registration import *
 
+# Global variable
+sent_message = None
+received_message = None
+
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 # helper function: speak
@@ -147,23 +151,6 @@ def qbo_read_setting(setting):
     else:
         return 'Error: Unknown setting'
 
-#------------------------------------------------------------------------------------------------------------------------------------------------------------
-# helper function: send message
-#------------------------------------------------------------------------------------------------------------------------------------------------------------
-def qbo_send_message(value):
-    
-    # TODO - NOT YET IMPLEMENTED
-    time.sleep(2.0)
-    return True
-
-#------------------------------------------------------------------------------------------------------------------------------------------------------------
-# helper function: receive message
-#------------------------------------------------------------------------------------------------------------------------------------------------------------
-def qbo_receive_message(value):
-    
-    # TODO - NOT YET IMPLEMENTED
-    time.sleep(2.0)
-    return True
 
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -399,6 +386,11 @@ class SendMessage(object):
         self._as.start()
       
     def execute_cb(self, goal):
+        global sent_message
+
+        sent_message = str(goal.messageContent,'utf-8')
+        print("the sent message is ",sent_message)
+        rospy.sleep(0.2)
         
         # append the seeds to give user feedback
         self._feedback.sequence = []
@@ -407,13 +399,11 @@ class SendMessage(object):
         
         rospy.loginfo('%s: Executing, creating SendMessage sequence with outputData %s with seeds %i, %i' % (self._action_name, goal.messageContent, self._feedback.sequence[0], self._feedback.sequence[1]))
         
-        # start executing the action
-        success = qbo_send_message(goal.messageContent)
+
           
-        if success:
-            self._result.isOK = success
-            rospy.loginfo('%s: Succeeded' % self._action_name)
-            self._as.set_succeeded(self._result)
+        self._result.isOK = True
+        rospy.loginfo('%s: Succeeded' % self._action_name)
+        self._as.set_succeeded(self._result)
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 # OnMessageReceive
@@ -429,6 +419,19 @@ class OnMessageReceive(object):
         self._as.start()
       
     def execute_cb(self, goal):
+        global received_message, sent_message
+
+        received_message = str(goal.messageContent,'utf-8')
+        if received_message == "qbo":
+            while sent_message != "qbo":
+                rospy.sleep(0.1)
+                print("while loop and message type is : ",type(sent_message))
+                if sent_message == "qbo":
+                    break
+                if rospy.is_shutdown() == True:
+                    break
+        print("exited")
+        rospy.sleep(0.2)
         
         # append the seeds to give user feedback
         self._feedback.sequence = []
@@ -437,13 +440,11 @@ class OnMessageReceive(object):
         
         rospy.loginfo('%s: Executing, creating OnMessageReceive sequence with outputData %s with seeds %i, %i' % (self._action_name, goal.messageContent, self._feedback.sequence[0], self._feedback.sequence[1]))
         
-        # start executing the action
-        success = qbo_receive_message(goal.messageContent)
-          
-        if success:
-            self._result.isOK = success
-            rospy.loginfo('%s: Succeeded' % self._action_name)
-            self._as.set_succeeded(self._result)
+
+
+        self._result.isOK = True
+        rospy.loginfo('%s: Succeeded' % self._action_name)
+        self._as.set_succeeded(self._result)
 
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
