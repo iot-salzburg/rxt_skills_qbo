@@ -2,7 +2,6 @@
 import time
 import serial #handles the serial ports
 import QboCmd #holds some commands we can use for Qbo
-import cv2
 
 Control_X_Axis = 1
 Control_Y_Axis = 2
@@ -28,20 +27,27 @@ def moveToStart(QBO):
 #-------------------------------------------------------------------------------------------
 # define required head postition variables and constants
 #-------------------------------------------------------------------------------------------
-def controlQBOHead(threadName, vs, ser, QBO):
+def controlQBOHead(threadName, cv2, vs, ser, QBO):
     
     CurrentAngle_X = 511 # start pos
     CurrentAngle_Y = 450 # start pos
 
     time.sleep(1) # wait for camera to initialize correctly (gets an empty curropted frame otherwise)
+    
+    # create window for imshow
+    resolution = (800, 500) # TODO: change resolution to real resolution from tablet of QBO STEM
+    winname = "Q.BO One Gesichtserkennung"
+    cv2.namedWindow(winname, cv2.WINDOW_NORMAL)
+    cv2.resizeWindow(winname, resolution[0], resolution[1])
+     
 
     #-------------------------------------------------------------------------------------------
     # run in loop, stream QBO video and wait for QWEASD key inputs
     #-------------------------------------------------------------------------------------------
     while True:
         
-        ret, frame = vs.read()   
-        cv2.imshow("Q.BO One Gesichtserkennung", frame)   
+        ret, frame = vs.read()       
+        cv2.imshow(winname, frame)
         key = cv2.waitKey(1) & 0xFF
         
         if key == ord("w"):
@@ -82,6 +88,7 @@ def controlQBOHead(threadName, vs, ser, QBO):
             
         elif key == ord("q"):
             print("Anwendung wird geschlossen...")
+            cv2.destroyAllWindows()
             break
     
 
